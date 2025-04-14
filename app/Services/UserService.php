@@ -30,7 +30,7 @@ class UserService implements UserPersistence, AuthUser
 
         if (!$loggedIn) {
             throw ValidationException::withMessages([
-               'email' => ['The provided credentials are incorrect.'],
+                'email' => ['The provided credentials are incorrect.'],
             ]);
         }
     }

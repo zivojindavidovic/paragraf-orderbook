@@ -15,6 +15,7 @@ class EmmitOrderBookChanges implements ShouldBroadcast
 
     private OrderRetriever $orderRetriever;
     private int $stockId;
+
     /**
      * Create a new event instance.
      */
