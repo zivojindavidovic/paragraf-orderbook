@@ -18,7 +18,7 @@ class OrderController extends Controller
     public function createOrder(CreateOrderRequest $request): RedirectResponse
     {
         $data = $request->validated();
-        $this->orderPersistence->saveOrder($data);
+        $this->orderPersistence->saveOrderAndEmmitChanges($data);
 
         return redirect('/stocks/' . $data['stock_id']);
     }

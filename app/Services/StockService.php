@@ -68,11 +68,11 @@ class StockService implements StockRetriever, MatchingEngine
                 echo $buy->quantity . " After Buy" . $sell->quantity . " After Sell";
                 echo PHP_EOL;
 
-                $this->orderPersistence->updateOrder($buy->order_id, [
+                $this->orderPersistence->updateOrderAndEmmitChanges($buy->order_id, [
                     Order::KEY_QUANTITY => $buy->quantity,
                 ]);
 
-                $this->orderPersistence->updateOrder($sell->order_id, [
+                $this->orderPersistence->updateOrderAndEmmitChanges($sell->order_id, [
                     Order::KEY_QUANTITY => $sell->quantity,
                 ]);
 
