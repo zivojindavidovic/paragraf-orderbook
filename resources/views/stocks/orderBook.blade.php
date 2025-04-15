@@ -5,59 +5,55 @@
         {{-- Buy Orders --}}
         <div class="mb-8">
             <h2 class="text-2xl font-semibold text-green-700 mb-4">Buy Orders</h2>
-            @if ($buyOrders->isEmpty())
-                <div class="p-4 bg-green-50 text-green-800 border border-green-200 rounded-md shadow">
-                    No buy orders available.
-                </div>
-            @else
-                <div class="overflow-x-auto bg-white shadow rounded-lg border border-green-300">
-                    <table class="min-w-full divide-y divide-green-200">
-                        <thead class="bg-green-100">
-                        <tr>
-                            <th class="px-6 py-3 text-left text-sm font-medium text-green-800 uppercase">Quantity</th>
-                            <th class="px-6 py-3 text-left text-sm font-medium text-green-800 uppercase">Price</th>
+            <div class="overflow-x-auto bg-white shadow rounded-lg border border-green-300">
+                <table class="min-w-full divide-y divide-green-200">
+                    <thead class="bg-green-100">
+                    <tr>
+                        <th class="px-6 py-3 text-left text-sm font-medium text-green-800 uppercase">Quantity</th>
+                        <th class="px-6 py-3 text-left text-sm font-medium text-green-800 uppercase">Price</th>
+                    </tr>
+                    </thead>
+                    <tbody class="divide-y divide-green-100" id="buyOrdersTable">
+                    @forelse ($buyOrders as $buyOrder)
+                        <tr class="hover:bg-green-50">
+                            <td class="px-6 py-4 text-sm text-gray-800">{{ $buyOrder->quantity }}</td>
+                            <td class="px-6 py-4 text-sm text-gray-800">{{ $buyOrder->price }}</td>
                         </tr>
-                        </thead>
-                        <tbody class="divide-y divide-green-100" id="buyOrdersTable">
-                        @foreach ($buyOrders as $buyOrder)
-                            <tr class="hover:bg-green-50">
-                                <td class="px-6 py-4 text-sm text-gray-800">{{ $buyOrder->quantity }}</td>
-                                <td class="px-6 py-4 text-sm text-gray-800">{{ $buyOrder->price }}</td>
-                            </tr>
-                        @endforeach
-                        </tbody>
-                    </table>
-                </div>
-            @endif
+                    @empty
+                        <tr>
+                            <td colspan="2" class="px-6 py-4 text-center text-green-500">No buy orders available.</td>
+                        </tr>
+                    @endforelse
+                    </tbody>
+                </table>
+            </div>
         </div>
 
         {{-- Sell Orders --}}
         <div class="mb-10">
             <h2 class="text-2xl font-semibold text-red-700 mb-4">Sell Orders</h2>
-            @if ($sellOrders->isEmpty())
-                <div class="p-4 bg-red-50 text-red-800 border border-red-200 rounded-md shadow">
-                    No sell orders available.
-                </div>
-            @else
-                <div class="overflow-x-auto bg-white shadow rounded-lg border border-red-300">
-                    <table class="min-w-full divide-y divide-red-200">
-                        <thead class="bg-red-100">
-                        <tr>
-                            <th class="px-6 py-3 text-left text-sm font-medium text-red-800 uppercase">Quantity</th>
-                            <th class="px-6 py-3 text-left text-sm font-medium text-red-800 uppercase">Price</th>
+            <div class="overflow-x-auto bg-white shadow rounded-lg border border-red-300">
+                <table class="min-w-full divide-y divide-red-200">
+                    <thead class="bg-red-100">
+                    <tr>
+                        <th class="px-6 py-3 text-left text-sm font-medium text-red-800 uppercase">Quantity</th>
+                        <th class="px-6 py-3 text-left text-sm font-medium text-red-800 uppercase">Price</th>
+                    </tr>
+                    </thead>
+                    <tbody class="divide-y divide-red-100" id="sellOrdersTable">
+                    @forelse ($sellOrders as $sellOrder)
+                        <tr class="hover:bg-red-50">
+                            <td class="px-6 py-4 text-sm text-gray-800">{{ $sellOrder->quantity }}</td>
+                            <td class="px-6 py-4 text-sm text-gray-800">{{ $sellOrder->price }}</td>
                         </tr>
-                        </thead>
-                        <tbody class="divide-y divide-red-100" id="sellOrdersTable">
-                        @foreach ($sellOrders as $sellOrder)
-                            <tr class="hover:bg-red-50">
-                                <td class="px-6 py-4 text-sm text-gray-800">{{ $sellOrder->quantity }}</td>
-                                <td class="px-6 py-4 text-sm text-gray-800">{{ $sellOrder->price }}</td>
-                            </tr>
-                        @endforeach
-                        </tbody>
-                    </table>
-                </div>
-            @endif
+                    @empty
+                        <tr>
+                            <td colspan="2" class="px-6 py-4 text-center text-red-500">No sell orders available.</td>
+                        </tr>
+                    @endforelse
+                    </tbody>
+                </table>
+            </div>
         </div>
 
         {{-- Create New Order --}}

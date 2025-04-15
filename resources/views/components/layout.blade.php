@@ -47,18 +47,27 @@
                 console.log(e);
 
                 const sellOrdersTable = document.getElementById('sellOrdersTable');
-                sellOrdersTable.innerHTML = '';
+                const buyOrdersTable = document.getElementById('buyOrdersTable');
 
+                console.log(sellOrdersTable)
+                console.log(buyOrdersTable)
+
+                if (!sellOrdersTable || !buyOrdersTable) {
+                    return;
+                }
+
+                sellOrdersTable.innerHTML = '';
                 e.sellOrders.forEach(order => {
+                    console.log('Adding sell row:', order);
                     const row = document.createElement('tr');
                     row.classList.add('border-b', 'border-red-300', 'hover:bg-red-100');
                     row.innerHTML = `<td class="px-4 py-2">${order.quantity}</td><td class="px-4 py-2">${order.price}</td>`;
                     sellOrdersTable.appendChild(row);
                 });
 
-                const buyOrdersTable = document.getElementById('buyOrdersTable');
                 buyOrdersTable.innerHTML = '';
                 e.buyOrders.forEach(order => {
+                    console.log('Adding buy row:', order);
                     const row = document.createElement('tr');
                     row.classList.add('border-b', 'border-green-300', 'hover:bg-green-100');
                     row.innerHTML = `<td class="px-4 py-2">${order.quantity}</td><td class="px-4 py-2">${order.price}</td>`;
@@ -67,5 +76,6 @@
             })
     }, 200);
 </script>
+
 </body>
 </html>
