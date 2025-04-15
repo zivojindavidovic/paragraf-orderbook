@@ -12,5 +12,5 @@ interface OrderPersistence
 
     public function updateOrder(int $orderId, array $order): ?Order;
 
-    public function updateOrderAndEmmitChanges(int $orderId, array $order): ?Order;
+    public function updateOrderAndEmmitChanges(int $stockId, int $orderId, array $order): ?Order;
 }

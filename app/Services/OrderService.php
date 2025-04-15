@@ -51,12 +51,12 @@ class OrderService implements OrderRetriever, OrderPersistence
         return $this->orderPersistenceRepository->update($orderId, $order);
     }
 
-    public function updateOrderAndEmmitChanges(int $orderId, array $order): ?Order
+    public function updateOrderAndEmmitChanges(int $stockId, int $orderId, array $order): ?Order
     {
         $updatedOrder = $this->updateOrder($orderId, $order);
 
         if ($updatedOrder !== null) {
-            $this->emmitOrderBookChanges($order['stock_id']);
+            $this->emmitOrderBookChanges($stockId);
         }
 
         return $updatedOrder;
